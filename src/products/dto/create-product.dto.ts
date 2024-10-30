@@ -1,12 +1,22 @@
-import { IsInt, IsNumber, IsString, Length, Max, Min } from "class-validator";
+import {
+  IsInt,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Length,
+  Max,
+  Min,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 
 export class CreateProductDto {
   @IsString()
-  @Length(10, 20)
+  @IsNotEmpty()
+  @Length(3, 25)
   public name: string;
   @IsNumber()
-  @IsInt()
-  @Min(0)
-  @Max(10)
+  @Min(1)
+  @Max(10000)
+  @Type(()=>Number)
   public price: string;
 }
