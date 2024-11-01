@@ -1,6 +1,5 @@
 import {
   Injectable,
-  HttpStatus,
   Logger,
   OnModuleInit,
 } from '@nestjs/common';

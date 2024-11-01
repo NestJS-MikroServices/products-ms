@@ -1,6 +1,5 @@
 import {
   Injectable,
-  HttpStatus,
   Logger,
   OnModuleInit,
 } from '@nestjs/common';
@@ -8,7 +7,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaClient } from '@prisma/client';
 import { PaginationDto } from './common';
-import { RpcException } from '@nestjs/microservices';
+import { RpcException } from '@nest/microservices';
 
 @Injectable()
 export class ProductsService extends PrismaClient implements OnModuleInit {
@@ -47,10 +46,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
       where: { id, available: true },
     });
     if (!product) {
-      throw new RpcException({
-        message: 'Product with ID lose',
-        status: HttpStatus.BAD_REQUEST
-      });
+      throw new RpcExcepcion('Product with ID lose');
     }
     return product;
   }

@@ -1,6 +1,5 @@
 import {
   Injectable,
-  HttpStatus,
   Logger,
   OnModuleInit,
 } from '@nestjs/common';
@@ -49,7 +48,6 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     if (!product) {
       throw new RpcException({
         message: 'Product with ID lose',
-        status: HttpStatus.BAD_REQUEST
       });
     }
     return product;

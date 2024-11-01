@@ -20,11 +20,11 @@ export class ProductsController {
   findAll(@Payload() paginationDto: PaginationDto) {
     return this.productsService.findAll(paginationDto);
   }
-  
+
   //@Get(':id')
   @MessagePattern({ cmd: 'find_product' })
   findOne(@Payload('id', ParseIntPipe) id: number) {
-    return this.productsService.findOne(id);
+    return this.productsService.findOne(+id);
   }
 
   //@Patch(':id')
