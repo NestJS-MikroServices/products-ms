@@ -29,10 +29,10 @@ export class ProductsController {
 
   //@Patch(':id')
   @MessagePattern({ cmd: 'set_product' })
-  async update( //@Param('id', ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto
+  update( //@Param('id', ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto
     @Payload() updateProductDto: UpdateProductDto,
   ) {
-    return await this.productsService.update(updateProductDto.id, updateProductDto);
+    return this.productsService.update(updateProductDto.id, updateProductDto);
   }
 
   //@Delete(':id')
@@ -41,3 +41,19 @@ export class ProductsController {
     return this.productsService.remove(id);
   }
 }
+
+@MessagePattern({ cmd: 'set_product' })
+  update(
+    //@Param('id', ParseIntPipe) id: number,
+    //@Body() updateProductDto: UpdateProductDto
+    @Payload() updateProductDto: UpdateProductDto,
+  ) {
+    return this.productsService.update(updateProductDto.id, updateProductDto);
+} "@MessagePattern({ cmd: 'set_product' })
+update(
+  //@Param('id', ParseIntPipe) id: number,
+  //@Body() updateProductDto: UpdateProductDto
+  @Payload() updateProductDto: UpdateProductDto,
+) {
+  return this.productsService.update(updateProductDto.id, updateProductDto);
+} "

@@ -29,10 +29,10 @@ export class ProductsController {
 
   //@Patch(':id')
   @MessagePattern({ cmd: 'set_product' })
-  async update( //@Param('id', ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto
+  update( //@Param('id', ParseIntPipe) id: number, @Body() updateProductDto: UpdateProductDto
     @Payload() updateProductDto: UpdateProductDto,
   ) {
-    return await this.productsService.update(updateProductDto.id, updateProductDto);
+    return this.productsService.update(updateProductDto.id, updateProductDto);
   }
 
   //@Delete(':id')
