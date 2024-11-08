@@ -15,7 +15,7 @@ async function bootstrap() {
     }
   );
 
-  const looger = new Logger('PRODUCTS MAIN');
+  const looger = new Logger('PRODUCT-main');
 
   //app.setGlobalPrefix('api');
 

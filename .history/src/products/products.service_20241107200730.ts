@@ -15,7 +15,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
   private readonly logger = new Logger('ProductsService');
   onModuleInit() {
     this.$connect();
-    this.logger.log('CONTAINER DOCKER: POSTGRES DATABASE => CONNECTED');
+    this.logger.log('DATABASE CONNECTED');
   }
 
   create(createProductDto: CreateProductDto) {
@@ -77,21 +77,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
   }
 
   async validateProducts( ids: number[] ){
-    ids = Array.from(new Set(ids));
-    const products = await this.product.findMany({
-      where: {
-        id: {
-          in: ids
-        }
-      }
-    });
-    if ( products.length != ids.length ){
-      throw new RpcException({
-        message: `SOME PRODUCT WE ARE NOT FOUND`,
-        status: HttpStatus.BAD_REQUEST,
-      })
-    }
-    return products;
+    ids = Array.from(new Set(ids))
   }
 
 

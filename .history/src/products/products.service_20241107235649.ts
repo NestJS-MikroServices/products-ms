@@ -15,7 +15,7 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
   private readonly logger = new Logger('ProductsService');
   onModuleInit() {
     this.$connect();
-    this.logger.log('CONTAINER DOCKER: POSTGRES DATABASE => CONNECTED');
+    this.logger.log('CONTAINER DOCKER: POSTGRES DATABASE CONNECTED');
   }
 
   create(createProductDto: CreateProductDto) {
