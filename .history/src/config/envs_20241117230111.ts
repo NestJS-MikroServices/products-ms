@@ -6,6 +6,7 @@ import * as process from 'process';
 interface EnvVars {
   PORT: number;
   DATABASE_URL: string;
+
   NATS_SERVERS: string[];
 }
 
@@ -23,7 +24,7 @@ const { error, value } = envsSchema.validate({
 });
 
 if (error) {
-  throw new Error(`CONFIG VALIDATION ERROR: ${error.message}`);
+  throw new Error(`Config Validation ERROR: ${error.message}`);
 }
 
 const envVars: EnvVars = value;
@@ -31,5 +32,5 @@ const envVars: EnvVars = value;
 export const envs = {
   port: envVars.PORT,
   databaseURL: envVars.DATABASE_URL,
-  natsServers: envVars.NATS_SERVERS
+  nats_server: envVars.NATS_SERVERS
 }

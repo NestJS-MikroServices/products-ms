@@ -6,6 +6,7 @@ import * as process from 'process';
 interface EnvVars {
   PORT: number;
   DATABASE_URL: string;
+
   NATS_SERVERS: string[];
 }
 
@@ -31,5 +32,5 @@ const envVars: EnvVars = value;
 export const envs = {
   port: envVars.PORT,
   databaseURL: envVars.DATABASE_URL,
-  natsServers: envVars.NATS_SERVERS
+  nats_server: envVars.NATS_SERVERS
 }

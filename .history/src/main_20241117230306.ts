@@ -5,27 +5,25 @@ import { envs } from './config';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-
-  const logger = new Logger('PRODUCTS MAIN');
-  console.log(envs.natsServers);
-
   const app = await NestFactory.createMicroservice<MicroserviceOptions>
-    (
-      AppModule, {
+  (
+    AppModule, {
       transport: Transport.NATS,
       options: {
-        servers: envs.natsServers
+        servers: [envs.natsServers]
       }
     }
-      /*
-      AppModule, {
-        transport: Transport.TCP,
-        options: {
-          port: envs.port
-        }
+    /*
+    AppModule, {
+      transport: Transport.TCP,
+      options: {
+        port: envs.port
       }
-      */
-    );
+    }
+    */
+  );
+
+  const looger = new Logger('PRODUCTS MAIN');
 
   //app.setGlobalPrefix('api');
 
@@ -37,6 +35,6 @@ async function bootstrap() {
   );
 
   await app.listen();
-  logger.log("PRODUCTS-MICROSERVICE ACTIVATE");
+  looger.log("PRODUCTS-MICROSERVICE ACTIVATE");
 }
 bootstrap();
